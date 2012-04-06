@@ -3,9 +3,9 @@ require File.expand_path('../lib/alula/plugins/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Mikko Kokkonen"]
-  gem.email         = ["mikko@mikian.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.email         = ["mikko@owlforestry.com"]
+  gem.description   = %q{Plugins for Alula blog}
+  gem.summary       = %q{Simple, ready to use plugins for Alula blogs.}
   gem.homepage      = ""
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "alula-plugins"
   gem.require_paths = ["lib"]
   gem.version       = Alula::Plugins::VERSION
+  
+  gem.add_dependency 'alula'
 end
