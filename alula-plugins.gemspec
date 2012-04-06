@@ -15,5 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Alula::Plugins::VERSION
   
-  gem.add_dependency 'alula'
+  gem.add_dependency 'alula', '~> 0.1.0'
+
+  gem.add_development_dependency 'version', '~> 1.0.0'
 end
