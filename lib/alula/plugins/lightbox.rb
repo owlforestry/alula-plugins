@@ -12,12 +12,12 @@ module Alula
       end
       
       def initialize(tag_name, markup, tokens)
-        /(?<src>(?:https?:\/\/|\/|\S+\/)\S+)(?<title>\s+.+)/ =~ markup
+        /(?<src>(?:https?:\/\/|\/|\S+\/)\S+)(?<title>\s+.+)?/ =~ markup
         /(?:"|')(?<title>[^"']+)?(?:"|')\s+(?:"|')(?<alt>[^"']+)?(?:"|')/ =~ title
         
         @name = src
-        @title = title
-        @alt = alt
+        @title = title || ""
+        @alt = alt || ""
       end
 
       def render(context)
