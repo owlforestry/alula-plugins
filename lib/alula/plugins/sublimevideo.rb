@@ -1,8 +1,11 @@
 module Alula
   module Plugins
-    class Sublimevideo # < Liquid::Tag
+    class Sublimevideo < Alula::Plugins::VideoAsset
       def self.install(options)
         @@options = options
+        
+        # Register head script hook
+        Alula::Plugins.register_scripts_for_head("<script src=\"http://cdn.sublimevideo.net/js/#{options["token"]}.js\" type=\"text/javascript\"></script>")
         
         # Register attachment insertion
         Alula::Plugins.register_attachment_handler(:video, ->(assets){
@@ -12,32 +15,25 @@ module Alula
         # Return path to assets
         File.expand_path(File.join(File.dirname(__FILE__), *%w{.. .. .. plugins sublimevideo}))
       end
-    #   
-    #   def initialize(tag_name, markup, tokens)
-    #     /(?<src>(?:https?:\/\/|\/|\S+\/)\S+)(?<title>\s+.+)?/ =~ markup
-    #     /(?:"|')(?<title>[^"']+)?(?:"|')\s+(?:"|')(?<alt>[^"']+)?(?:"|')/ =~ title
-    #     
-    #     @name = src
-    #     @title = title || ""
-    #     @alt = alt || ""
-    #   end
-    # 
-    #   def render(context)
-    #     asset_path = context.registers[:site].config["asset_path"]
-    #     manifest = context.registers[:site].config["manifest"]
-    #     
-    #     original = File.join(asset_path, manifest.assets[File.join("images", @name)])
-    #     thumbnail = File.join(asset_path, manifest.assets[File.join("thumbnails", @name)])
-    #     
-    #     # Fetch image size
-    #     img = Magick::Image.read(File.join("public", thumbnail)).first
-    #     width = img.columns
-    #     height = img.rows
-    #     
-    #     tag = "<a class=\"fancybox\" rel=\"#{context.environments.first["page"]["id"]}\" href=\"#{original}\">"
-    #     tag += "<img src=\"#{thumbnail}\" alt=\"#{@alt}\" title=\"#{@title}\" width=\"#{width}\" height=\"#{height}\">"
-    #     tag += "</a>"
-    #   end
+
+      def initialize(tag_name, markup, tokens)
+        super
+        @class = "sublime zoom"
+        @style = "display: none;"
+      end
+      
+      def render(context)
+        output = super
+        exif = MiniExiftool.new File.join("public", @poster)
+        
+        tag = " <a class=\"sublime zoomable\" href=\"#{@srcs.first}\" style=\"width: #{exif.imagewidth}px; height: #{exif.imageheight}px;\">\n"
+        tag << "  <img src=\"#{@poster}\" alt=\"\" />\n"
+        tag << "  <span class=\"zoom_icon\"></span>\n"
+        tag << "</a>\n"
+        tag << output
+      end
     end
   end
 end
+
+Liquid::Template.register_tag('video', Alula::Plugins::Sublimevideo)
