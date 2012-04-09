@@ -5,7 +5,7 @@ module Alula
         @@options = options
         
         # Register head script hook
-        Alula::Plugins.register_scripts_for_head("<script src=\"http://cdn.sublimevideo.net/js/#{options["token"]}.js\" type=\"text/javascript\"></script>")
+        Alula::Plugins.register_content_for_head("<script src=\"http://cdn.sublimevideo.net/js/#{options["token"]}.js\" type=\"text/javascript\"></script>")
         
         # Register attachment insertion
         Alula::Plugins.register_attachment_handler(:video, ->(assets){

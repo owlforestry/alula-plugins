@@ -6,7 +6,7 @@ module Alula
         
         # Register head script hook
         if options['hosted']
-          Alula::Plugins.register_scripts_for_head("<link href=\"http://vjs.zencdn.net/c/video-js.css\" rel=\"stylesheet\">\n<script src=\"http://vjs.zencdn.net/c/video.js\"></script>")
+          Alula::Plugins.register_content_for_head("<link href=\"http://vjs.zencdn.net/c/video-js.css\" rel=\"stylesheet\">\n<script src=\"http://vjs.zencdn.net/c/video.js\"></script>")
         end
         
         # Register attachment insertion
