@@ -20,6 +20,7 @@ module Alula
         super
         @class = "sublime zoom"
         @style = "display: none;"
+        @controls = false
       end
       
       def render(context)
