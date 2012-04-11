@@ -40,7 +40,8 @@ module Alula
           
           exif = MiniExiftool.new File.join("public", sources.first)
           tag += "<video"
-          tag += " controls"
+          tag += " class=\"sublime zoom\""
+          tag += " style=\"display: none;\""
           tag += " width=\"#{exif.imagewidth}\" height=\"#{exif.imageheight}\" poster=\"#{poster}\" preload=\"none\">\n"
           
           sources.each do |src|
