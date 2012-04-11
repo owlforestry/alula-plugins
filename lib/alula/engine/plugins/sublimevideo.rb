@@ -20,7 +20,7 @@ module Alula
           # })
           #         
           # Return path to assets
-          File.expand_path(File.join(File.dirname(__FILE__), *%w{.. .. .. plugins sublimevideo}))
+          File.expand_path(File.join(File.dirname(__FILE__), *%w{.. .. .. .. plugins sublimevideo}))
         end
 
         def prepare(markup, tokens)
