@@ -16,6 +16,7 @@ Gem::Specification.new do |gem|
   gem.version       = Alula::Plugins::VERSION
   
   gem.add_dependency 'alula', '~> 0.2'
+  gem.add_dependency 'mini_exiftool', '~> 1.3'
 
   gem.add_development_dependency 'version', '~> 1.0.0'
 end
