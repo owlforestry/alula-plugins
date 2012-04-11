@@ -10,7 +10,7 @@ module Alula
           @@options = options
 
           # Return path to assets
-          File.expand_path(File.join(File.dirname(__FILE__), *%w{.. .. .. plugins lightbox}))
+          File.expand_path(File.join(File.dirname(__FILE__), *%w{.. .. .. .. plugins lightbox}))
         end
         
         def prepare(markup, tokens)
