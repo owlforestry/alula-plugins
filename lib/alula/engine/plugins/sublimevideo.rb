@@ -10,8 +10,7 @@ module Alula
           @@options = options
           
           Plugins.addon :head, ->(context){
-            # binding.pry if context.page.id == "2012-04-first-blog"
-            "<script src=\"http://cdn.sublimevideo.net/js/#{options["token"]}.js\" type=\"text/javascript\"></script>" if context.page.content[/{% video/]
+            "<script src=\"http://cdn.sublimevideo.net/js/#{options["token"]}.js\" type=\"text/javascript\"></script>" if context.page.content[/\<video/]
           }
 
           # # Register attachment insertion
