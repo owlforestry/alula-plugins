@@ -52,6 +52,7 @@ plugins:
             tag += " data-width=\"#{width}\""
             tag += " data-height=\"#{height}\""
             tag += " data-retina=\"#{hires(@src, "images")}\"" if context.config.images["hires"] and hires(@src, "images")
+            tag += " title=\"#{self.title}\"" if self.title
             tag += ">"
             tag += imagetag(@src, 'thumbnails')
             tag += "</a>"
