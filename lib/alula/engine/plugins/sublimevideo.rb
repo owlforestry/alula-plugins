@@ -31,24 +31,26 @@ module Alula
       
         def content(context)
           exif = MiniExiftool.new File.join("public", poster)
-        
-          tag = " <a class=\"sublime zoomable\" href=\"#{sources.first}\" style=\"width: #{exif.imagewidth}px; height: #{exif.imageheight}px;\">\n"
-          tag += "  <img src=\"#{poster}\" alt=\"\" width=\"#{exif.imagewidth}\" height=\"#{exif.imageheight}\" />\n"
-          tag += "  <span class=\"zoom_icon\"></span>\n"
-          tag += "</a>\n"
+          
+          tag = " <a class=\"sublime zoomable\" href=\"#{sources.first}\" style=\"width: #{exif.imagewidth}px; height: #{exif.imageheight}px;\">"
+          tag += "  <img src=\"#{poster}\" alt=\"\" width=\"#{exif.imagewidth}\" height=\"#{exif.imageheight}\" />"
+          tag += "  <span class=\"zoom_icon\"></span>"
+          tag += "</a>"
           
           exif = MiniExiftool.new File.join("public", sources.first)
           tag += "<video"
-          tag += " class=\"sublime zoom\""
+          tag += " class=\"sublime lightbox\""
           tag += " style=\"display: none;\""
-          tag += " width=\"#{exif.imagewidth}\" height=\"#{exif.imageheight}\" poster=\"#{poster}\" preload=\"none\">\n"
+          tag += " width=\"#{exif.imagewidth}\" height=\"#{exif.imageheight}\" poster=\"#{poster}\" preload=\"none\""
+          tag += " data-uid=\"#{@name}\""
+          tag += ">"
           
           sources.each do |src|
             exif = MiniExiftool.new File.join("public", src)
             hd = (exif.imageheight >= 720 or exif.imagewidth >= 720)
-            tag << "  <source src=\"#{src}\" #{hd ? "data-quality=\"hd\"" : ""} />\n"
+            tag << "  <source src=\"#{src}\" #{hd ? "data-quality=\"hd\"" : ""} />"
           end
-          tag << "</video>\n"
+          tag << "</video>"
         end
       end
     end
