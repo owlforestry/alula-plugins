@@ -41,8 +41,8 @@ plugins:
             # Not an attachment, fall back to regular image tag
             super
           else
-            # binding.pry
             exif = MiniExiftool.new File.join(context.config.public_path, image)
+            # Set name and prefix for metadata
             width, height = exif.imagewidth, exif.imageheight
             
             tag = "<a"
@@ -51,7 +51,7 @@ plugins:
             tag += " href=\"#{image}\""
             tag += " data-width=\"#{width}\""
             tag += " data-height=\"#{height}\""
-            tag += " data-retina=\"#{hires(@src, "images")}\"" if context.config.images["hires"] and hires(@src, "images")
+            tag += " data-hires=\"#{hires(@src, "images")}\"" if context.config.images["hires"] and hires(@src, "images")
             tag += " title=\"#{self.title}\"" if self.title
             tag += ">"
             tag += imagetag(@src, 'thumbnails')
