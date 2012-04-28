@@ -47,11 +47,11 @@ plugins:
             
             tag = "<a"
             tag += " class=\"fancybox\""
-            tag += " rel=\"#{context.page.id}\""
             tag += " href=\"#{image}\""
             tag += " data-width=\"#{width}\""
             tag += " data-height=\"#{height}\""
             tag += " data-hires=\"#{hires(@src, "images")}\"" if context.config.images["hires"] and hires(@src, "images")
+            tag += " data-fancybox-group=\"#{context.page.id}\""
             tag += " title=\"#{self.title}\"" if self.title
             tag += ">"
             tag += imagetag(@src, 'thumbnails')
