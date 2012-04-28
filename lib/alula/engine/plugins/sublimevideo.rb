@@ -22,13 +22,13 @@ module Alula
           File.expand_path(File.join(File.dirname(__FILE__), *%w{.. .. .. .. plugins sublimevideo}))
         end
 
-        def prepare(markup, tokens)
-          super
-          # @class = "sublime zoom"
-          # @style = "display: none;"
-          # @controls = false
-        end
-      
+        # def prepare(markup, tokens)
+        #   super
+        #   # @class = "sublime zoom"
+        #   # @style = "display: none;"
+        #   # @controls = false
+        # end
+        #       
         def content(context)
           exif = MiniExiftool.new File.join("public", poster)
           
