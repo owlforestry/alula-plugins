@@ -36,19 +36,22 @@ module Alula
       thumbnail = attachment_url(@source, :thumbnail)
       hires = hires_url(@source, :image)
       info = info(@source, :image)
+      tn_info = info(@source, :thumbnail)
 
       return super unless image and thumbnail
       
       tag = "<a"
-      tag += " class=\"fancybox\""
+      tag += " class=\"img fancybox fb_zoomable #{(@classes + [@align]).join(" ")}\""
       tag += " href=\"#{image}\""
       tag += " data-width=\"#{info.width}\""
       tag += " data-height=\"#{info.height}\""
       tag += " data-hires=\"#{hires}\"" if context.site.config.attachments.image.hires and hires
       tag += " data-fancybox-group=\"#{context.item.id}\""
       tag += " title=\"#{@title}\"" if @title
+      tag += " style=\"width: #{tn_info.width}px; height: #{tn_info.height}px;\""
       tag += ">"
-      tag += imagetag(@source, :thumbnail)
+      tag += imagetag(@source, :thumbnail, classes: [])
+      tag += "  <span class=\"fb_zoom_icon\"></span>"
       tag += "</a>"
     end
   end
