@@ -15,8 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Alula::Plugins::VERSION
   
-  gem.add_dependency 'alula', '~> 0.3.0a'
-  gem.add_dependency 'mini_exiftool', '~> 1.3'
+  gem.add_dependency 'alula', '~> 0.4.0a'
 
   gem.add_development_dependency 'version', '~> 1.0.0'
 end

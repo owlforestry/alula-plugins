@@ -1,0 +1,3 @@
+/*
+Empty Javascript file for SublimeVideo
+*/
