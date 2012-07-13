@@ -8,7 +8,7 @@ module Alula
     end
     
     def self.install(options)
-      # Display license unless acknoledged
+      # Require valid sublime token present in configuration
       return false unless options.token
       
       # Register addons
@@ -35,7 +35,7 @@ module Alula
       tag += ">"
       tag += " <img"
       tag += "  src=\"#{poster}\""
-      tag += "  alt=\"#{@alt}\""
+      tag += "  alt=\"#{@options["alternative"]}\""
       tag += "  width=\"#{info.width}\" height=\"#{info.height}\""
       tag += "  />"
       tag += "  <span class=\"zoom_icon\"></span>"

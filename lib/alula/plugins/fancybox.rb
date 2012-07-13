@@ -41,13 +41,13 @@ module Alula
       return super unless image and thumbnail
       
       tag = "<a"
-      tag += " class=\"img fancybox fb_zoomable #{(@classes + [@align]).join(" ")}\""
+      tag += " class=\"img fancybox fb_zoomable #{@options["classes"].join(" ")}\""
       tag += " href=\"#{image}\""
       tag += " data-width=\"#{info.width}\""
       tag += " data-height=\"#{info.height}\""
       tag += " data-hires=\"#{hires}\"" if context.site.config.attachments.image.hires and hires
       tag += " data-fancybox-group=\"#{context.item.id}\""
-      tag += " title=\"#{@title}\"" if @title
+      tag += " title=\"#{@options["title"]}\"" if @options["title"]
       tag += " style=\"width: #{tn_info.width}px; height: #{tn_info.height}px;\""
       tag += ">"
       tag += imagetag(@source, :thumbnail, classes: [])
