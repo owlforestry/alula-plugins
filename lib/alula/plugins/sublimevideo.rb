@@ -27,16 +27,25 @@ module Alula
     def sublime_videotag(source)
       poster = source.gsub(/#{File.extname(source)}$/, '.png')
       info = info(poster, :thumbnail)
+      poster_hires = hires_url(poster, :thumbnail)
       poster = attachment_url(poster, :thumbnail)
+      
       tag =  "<a"
       tag += " class=\"sublime zoomable\""
       tag += " href=\"#{sources.first[:url]}\""
       tag += " style=\"width: #{info.width}px; height: #{info.height}px;\""
       tag += ">"
       tag += " <img"
-      tag += "  src=\"#{poster}\""
       tag += "  alt=\"#{@options["alternative"]}\""
       tag += "  width=\"#{info.width}\" height=\"#{info.height}\""
+      if context.site.config.attachments.image.lazyload
+        tag += " src=\"#{asset_url("grey.gif")}\""
+        tag += " data-original=\"#{poster}\""
+      else
+        tag += " src=\"#{poster}\""
+      end
+      tag += " data-hires=\"#{poster_hires}\"" if context.site.config.attachments.image.hires and poster_hires
+      
       tag += "  />"
       tag += "  <span class=\"zoom_icon\"></span>"
       tag += "</a>"
