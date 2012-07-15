@@ -3,7 +3,7 @@ require 'alula/plugin'
 
 module Alula
   class Sublimevideo < VideoTag
-    def self.asset_path
+    def self.path
       File.join(File.dirname(__FILE__), %w{.. .. .. plugins sublimevideo})
     end
     

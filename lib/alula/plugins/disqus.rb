@@ -2,7 +2,7 @@ require 'alula/plugin'
 
 module Alula
   class Disqus
-    def self.asset_path
+    def self.path
       File.join(File.dirname(__FILE__), %w{.. .. .. plugins disqus})
     end
     
