@@ -21,6 +21,9 @@ module Alula
     end
     
     def content
+      # FeedBuilder support, skip sublime extensions for feeds
+      return super if self.context.item.metadata.renderer.class.to_s == "Alula::Generator::FeedBuilder"
+
       sublime_videotag(@source)
     end
     
