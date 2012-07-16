@@ -63,7 +63,7 @@ module Alula
       tag += " poster=\"#{poster}\""
       tag += " preload=\"none\""
       tag += " data-uid=\"#{source}\""
-      tag += " data-name\"#{source}\""
+      tag += " data-name=\"#{source}\""
       tag += ">"
       
       sources.each do |source|
