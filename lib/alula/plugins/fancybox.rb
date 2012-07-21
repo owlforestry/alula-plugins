@@ -7,6 +7,10 @@ module Alula
       File.join(File.dirname(__FILE__), %w{.. .. .. plugins fancybox})
     end
     
+    def self.version
+      Alula::Plugins::VERSION
+    end
+    
     def self.install(options)
       # Display license unless acknoledged
       unless options.kind_of?(Hash) and options['personal']

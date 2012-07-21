@@ -6,6 +6,10 @@ module Alula
       File.join(File.dirname(__FILE__), %w{.. .. .. plugins emphasis})
     end
     
+    def self.version
+      Alula::Plugins::VERSION
+    end
+    
     def self.install(options)
       # Force defer mode on script loading
       Alula::Plugin.script_load_mode = :defer

@@ -7,13 +7,17 @@ module Alula
       File.join(File.dirname(__FILE__), %w{.. .. .. plugins sublimevideo})
     end
     
+    def self.version
+      Alula::Plugins::VERSION
+    end
+    
     def self.install(options)
       # Require valid sublime token present in configuration
       return false unless options.token
       
       # Register addons
       Alula::Plugin.addon :head, ->(context) {
-        "<script src=\"http://cdn.sublimevideo.net/js/#{options.token}.js\"></script>" if context.item.content[/\<video/]
+        "<script src=\"http://cdn.sublimevideo.net/js/#{options.token}.js\" async></script>" if context.item.content[/\<video/]
       }
       
       # Register for image tags

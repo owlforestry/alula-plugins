@@ -6,6 +6,10 @@ module Alula
       File.join(File.dirname(__FILE__), %w{.. .. .. plugins disqus})
     end
     
+    def self.version
+      Alula::Plugins::VERSION
+    end
+    
     def self.install(options)
       return false unless options.shortname
       # Force defer mode on script loading
